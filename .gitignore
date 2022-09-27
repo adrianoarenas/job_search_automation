@@ -1,2 +1,5 @@
 **/secrets*
 **/*.conf
+
+.DS_Store
+**/.DS_Store
