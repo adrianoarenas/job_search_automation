@@ -54,6 +54,13 @@ resource "aws_instance" "app_server" {
   key_name      = var.key_name
   vpc_security_group_ids = [aws_security_group.main.id]
 
+  user_data = <<EOF
+  #! /bin/bash
+  git clone https://github.com/adrianoarenas/job_search_automation.git
+  chmod +x job_search_automation/init_file.sh
+  ./job_search_automation/init_file.sh
+  EOF
+
   tags = {
     Name = var.ec2_name
     }
