@@ -60,9 +60,9 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
     _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
   volumes:
-    - ~/job_search_automation/etl_scripts:/opt/airflow/dags
-    - ./logs:/opt/airflow/logs
-    - ./plugins:/opt/airflow/plugins
+    - /home/ubuntu/job_search_automation/etl_scripts:/opt/airflow/dags
+    - /home/ubuntu/logs:/opt/airflow/logs
+    - /home/ubuntu/plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -238,7 +238,9 @@ services:
       _PIP_ADDITIONAL_REQUIREMENTS: ''
     user: "0:0"
     volumes:
-      - .:/sources
+      - /home/ubuntu/logs:/sources/logs
+      - /home/ubuntu/plugins:/sources/plugins
+      - /home/ubuntu/job_search_automation/etl_scripts:/sources/dags
 
   airflow-cli:
     <<: *airflow-common

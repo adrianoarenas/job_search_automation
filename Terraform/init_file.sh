@@ -1,15 +1,18 @@
 #! /bin/bash
 
 #Update to latest
+echo "Updating packages"
 sudo apt-get update
 
 #Cloning Repo for DAGs, etc
-git clone https://github.com/adrianoarenas/job_search_automation.git
+echo "Cloning Repo"
+git clone https://github.com/adrianoarenas/job_search_automation.git /home/ubuntu/job_search_automation
 
 #chmod +x job_search_automation/init_file.sh
 #./job_search_automation/init_file.sh
 
 #Install Docker
+echo "Installing Docker + Docker Compose"
 yes | sudo apt install docker.io
 
 #Docker compose
@@ -19,5 +22,16 @@ curl -SL https://github.com/docker/compose/releases/download/v2.12.1/docker-comp
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 #setup for AirFlow
-mkdir ./plugins ./logs
+mkdir /home/ubuntu/plugins /home/ubuntu/logs
+
+cd /home/ubuntu/
 echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+
+#Executing Docker Compose for Airflow et al
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+cd /home/ubuntu/job_search_automation/Docker/
+docker compose up airflow-init
+docker compose up -d
