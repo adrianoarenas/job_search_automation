@@ -5,11 +5,11 @@ echo "Installing Docker + Docker Compose"
 yes | sudo apt install docker.io
 
 #Executing Docker Compose for Airflow et al
-echo "Adding docker to user group + allowing to use it"
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-echo " "
+#echo "Adding docker to user group + allowing to use it"
+#sudo groupadd docker
+#sudo usermod -aG docker $USER
+#newgrp docker
+#echo " "
 
 #Docker compose
 echo "Docker Compose download + Setup"
@@ -33,5 +33,5 @@ echo " "
 
 echo "Changing directory to use docker compose file"
 cd /home/ubuntu/job_search_automation/Docker/
-docker compose up airflow-init
-docker compose up -d
+sudo docker compose up airflow-init
+sudo docker compose up -d
