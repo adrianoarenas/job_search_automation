@@ -18,7 +18,9 @@ echo " "
 
 echo "Setting up env variables"
 sudo chmod 777 /home/ubuntu/job_search_automation/Docker/
-echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+sudo touch .env
+sudo chmod 777 /home/ubuntu/job_search_automation/Docker/.env
+sudo echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
 echo " "
 
 echo "Changing directory to use docker compose file"
