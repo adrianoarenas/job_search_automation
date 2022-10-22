@@ -7,7 +7,7 @@ yes | sudo apt install docker.io
 #Docker compose
 echo "Docker Compose download + Setup"
 yes "" | sudo add-apt-repository universe
-Y | sudo apt install docker-compose
+yes | sudo apt install docker-compose
 echo "Docker compose setup finished"
 echo " "
 
@@ -17,12 +17,11 @@ mkdir /home/ubuntu/plugins /home/ubuntu/logs
 echo " "
 
 echo "Setting up env variables"
-export AIRFLOW_UID=$(id -u)
-export AIRFLOW_GID=0
+sudo chmod 777 /home/ubuntu/job_search_automation/Docker/
+echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
 echo " "
-
 
 echo "Changing directory to use docker compose file"
 cd /home/ubuntu/job_search_automation/Docker/
-docker compose up airflow-init
-docker compose up -d
+sudo docker-compose up airflow-init
+sudo docker-compose up -d
