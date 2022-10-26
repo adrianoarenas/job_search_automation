@@ -3,9 +3,13 @@
 echo "Updating packages"
 yes | sudo yum update
 
+echo "Installing git"
+yes | sudo yum install git
+
 echo "Cloning Repo for DAGs, etc"
 echo "Cloning Repo"
-git clone https://github.com/adrianoarenas/job_search_automation.git /home/ubuntu/job_search_automation
+sudo git clone https://github.com/adrianoarenas/job_search_automation.git /home/ec2-user/job_search_automation
 
 echo "Executing /init_file.sh"
-/home/ubuntu/job_search_automation/init_file.sh
+sudo chmod +x /home/ec2-user/job_search_automation/init_file.sh
+/home/ec2-user/job_search_automation/init_file.sh

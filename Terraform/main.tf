@@ -53,7 +53,7 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
   key_name      = var.key_name
   vpc_security_group_ids = [aws_security_group.main.id]
-  #user_data = "${file("setup.sh")}"
+  user_data = "${file("setup.sh")}"
   tags = {
     Name = var.ec2_name
     }
