@@ -49,11 +49,11 @@ resource "aws_security_group" "main" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0f540e9f488cfa27d"
+  ami           = "ami-0648ea225c13e0729"
   instance_type = "t2.micro"
   key_name      = var.key_name
   vpc_security_group_ids = [aws_security_group.main.id]
-  user_data = "${file("setup.sh")}"
+  #user_data = "${file("setup.sh")}"
   tags = {
     Name = var.ec2_name
     }
