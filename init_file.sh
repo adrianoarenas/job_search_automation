@@ -21,8 +21,8 @@ echo "Making entrypoint executable"
 echo -e '#! /bin/bash
 airflow upgradedb
 airflow webserver
-' > scripts/airflow-entrypoint.sh
-sudo chmod 777 /job_search_automation/Docker/scripts/airflow-entrypoint.sh
+' > job_search_automation/Docker/scripts/airflow-entrypoint.sh
+sudo chmod 777 job_search_automation/Docker/scripts/airflow-entrypoint.sh
 
 echo "Setting Env vars"
 echo "AIRFLOW__CORE__LOAD_DEFAULT_CONNECTIONS=False
