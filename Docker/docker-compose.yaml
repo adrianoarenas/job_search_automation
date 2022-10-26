@@ -36,7 +36,7 @@ services:
     depends_on:
       - postgres
     env_file:
-      - .env
+      - /home/ec2-user/.env
     volumes:
       - /home/ec2-user/job_search_automation/dags:/opt/airflow/dags
       - /home/ec2-user/job_search_automation/Docker/scripts:/opt/airflow/scripts

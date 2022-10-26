@@ -32,3 +32,5 @@ AIRFLOW_VAR__METADATA_DB_SCHEMA=airflow
 AIRFLOW__SCHEDULER__SCHEDULER_HEARTBEAT_SEC=10
 " > /home/ec2-user/.env
 
+cd job_search_automation/Docker/
+docker-compose up -d
