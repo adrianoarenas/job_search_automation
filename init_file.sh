@@ -20,7 +20,11 @@ sudo mkdir -p ./dags ./logs ./plugins
 echo "creating env var"
 sudo echo -e "AIRFLOW_UID=$(id -u)" > .env
 
+echo "before setting docker user"
+
 sudo gpasswd -a $USER docker
 newgrp docker
+
+echo "after setting docker user"
 
 docker-compose up -d
