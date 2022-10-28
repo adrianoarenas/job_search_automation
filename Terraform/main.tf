@@ -44,13 +44,24 @@ resource "aws_security_group" "main" {
      security_groups  = []
      self             = false
      to_port          = 22
+  },
+  {
+     cidr_blocks      = [ "0.0.0.0/0", ]
+     description      = ""
+     from_port        = 8080
+     ipv6_cidr_blocks = []
+     prefix_list_ids  = []
+     protocol         = "tcp"
+     security_groups  = []
+     self             = false
+     to_port          = 8080
   }
   ]
 }
 
 resource "aws_instance" "app_server" {
   ami           = "ami-0648ea225c13e0729"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   key_name      = var.key_name
   vpc_security_group_ids = [aws_security_group.main.id]
   user_data = "${file("setup.sh")}"
