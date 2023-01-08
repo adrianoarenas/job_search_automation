@@ -1,4 +1,4 @@
-asdf
+### Note that this is an outdated project from May 2021 (first project ever), scraping indeed this way doesn't work anymore and I know coding isnt as good as it could be hahah
 </br>
 
 # Automating my job search
